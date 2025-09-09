@@ -89,13 +89,15 @@
     <main class="container mx-auto px-4 py-20">
       <div class="grid grid-cols-12 gap-6">
         <aside class="col-span-12 md:col-span-3">
-          <h2 class="text-xl font-bold mb-4">Categories</h2>
+          <h2 class="text-2xl font-bold mb-4 text-black">Categories</h2>
           <div id="category-list" class="space-y-2"></div>
         </aside>
 
         <section id="trees" class="col-span-12 md:col-span-6">
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold">Choose Your Trees</h2>
+            <h2 class="text-2xl font-bold text-black text-center px-48">
+              Choose Your Trees
+            </h2>
             <div id="spinner" class="hidden">
               <span class="loading loading-spinner"></span>
             </div>
@@ -108,9 +110,9 @@
 
         <aside class="col-span-12 md:col-span-3">
           <div class="bg-white p-4 rounded-lg shadow sticky top-20">
-            <h2 class="text-xl font-bold mb-3">Your Cart</h2>
+            <h2 class="text-2xl font-bold mb-3 text-black">Your Cart</h2>
             <ul id="cart-list" class="space-y-2"></ul>
-            <p id="empty-cart" class="text-center text-gray-400">
+            <p id="empty-cart" class="text-center text-gray-400 font-semibold">
               Cart is empty
             </p>
             <div class="divider"></div>
@@ -119,7 +121,7 @@
             </div>
             <button
               id="checkout-btn"
-              class="btn btn-success btn-block"
+              class="btn btn-success btn-block text-black font-bold"
               disabled
             >
               Checkout
