@@ -185,8 +185,8 @@ const loadPlantDetail = (id) => {
   fetch(API.plant(id))
     .then((res) => res.json())
     .then((json) => {
-      console.log("Plant Detail API:", json);
-      displayPlantDetail(json.data ?? {});
+      console.log("Plant Detail API Response:", json);
+      displayPlantDetail(json.plants ?? {}); // 👈 এখানে ঠিক করা হলো
     })
     .catch(() => {
       modalTitle.textContent = "Error";
@@ -196,19 +196,24 @@ const loadPlantDetail = (id) => {
 };
 
 const displayPlantDetail = (p) => {
-  const name = p.plantName ?? p.name ?? "Unknown Plant";
-  const img =
-    p.image ?? p.img ?? "https://via.placeholder.com/600x400?text=No+Image";
-  const desc = p.description ?? p.details ?? "No description available.";
-  const cat = p.category ?? p.category_name ?? "Unknown Category";
-  const price = p.price ?? Math.floor(Math.random() * 20) + 5;
+  const name = p.name || "Unknown";
+  const img = p.image || "https://via.placeholder.com/600x400?text=No+Image";
+  const desc = p.description || "No description available.";
+  const cat = p.category || "Unknown Category";
+  const price = p.price || Math.floor(Math.random() * 20) + 5;
 
   modalTitle.textContent = name;
   modalBody.innerHTML = `
-    <img src="${img}" alt="${name}" class="w-full h-60 object-cover rounded">
-    <p class="text-gray-700 mt-3">${desc}</p>
-    <p class="mt-2 text-sm text-gray-500"><strong>Category:</strong> ${cat}</p>
-    <p class="text-green-700 font-bold mt-2">Price: $${price}</p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <img src="${img}" alt="${name}" class="w-full h-60 object-cover rounded shadow">
+      </div>
+      <div>
+        <p class="text-gray-700 mb-3">${desc}</p>
+        <p class="mt-2 text-sm text-gray-500"><strong>Category:</strong> ${cat}</p>
+        <p class="text-green-700 font-bold mt-2">Price: $${price}</p>
+      </div>
+    </div>
   `;
   modal.showModal();
 };
