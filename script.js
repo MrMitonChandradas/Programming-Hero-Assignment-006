@@ -186,7 +186,7 @@ const loadPlantDetail = (id) => {
     .then((res) => res.json())
     .then((json) => {
       console.log("Plant Detail API Response:", json);
-      displayPlantDetail(json.plants ?? {}); // 👈 এখানে ঠিক করা হলো
+      displayPlantDetail(json.plants ?? {});
     })
     .catch(() => {
       modalTitle.textContent = "Error";
